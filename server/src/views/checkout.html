@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>{{title}}</title>
+
+  <head>
+    <link rel="stylesheet" href="{{stylesheetPath}}" />
+
+    {{&prerequisiteScripts}}
+    <script src="{{initScriptPath}}" defer></script>
+  </head>
+
+  <body>
+    <center><a href="shipping">Switch</a></center>
+    <form>
+      <h1>{{title}}</h1>
+
+      <section id="customer" class="active visited">
+        <div class="header">
+          <h2>Customer</h2>
+          <button id="email-edit-button" type="button" class="edit-button">
+            Edit
+          </button>
+        </div>
+        <div class="summary"></div>
+        <div class="email-container">
+          <fieldset class="email-input-with-watermark">
+            <input
+              id="email-input"
+              name="email"
+              type="email"
+              placeholder="Email"
+              autocomplete="email"
+            />
+            <div id="watermark-container"></div>
+          </fieldset>
+          <button
+            id="email-submit-button"
+            type="button"
+            class="submit-button"
+            disabled
+          >
+            Continue
+          </button>
+        </div>
+      </section>
+
+      <hr />
+
+      <!-- 2.2 - Replace this section with the new HTML -->
+      <section id="payment">
+        <div class="header">
+          <h2>Payment</h2>
+          <button id="payment-edit-button" type="button" class="edit-button">
+            Edit
+          </button>
+        </div>
+        <fieldset>
+          <input name="card-number" placeholder="Card Number" />
+          <input name="expiration-date" placeholder="Expiration (MM/YY)" />
+          <input name="cvv" placeholder="CVV" />
+          <input name="name-on-card" placeholder="Name on card" />
+        </fieldset>
+      </section>
+      <!-- 2.2 - End of the section -->
+
+      <hr />
+
+      <h2 style="padding-top: 20px">Total: ${{amount}}</h2>
+
+      <button id="checkout-button" type="button" class="submit-button">
+        Checkout
+      </button>
+    </form>
+
+    <details class="test-cards">
+      <summary class="test-cards-summary">Test cards</summary>
+      <ul class="cards-list">
+        <li class="cards-list-item">
+          <span class="card-type">Visa</span>
+          <span class="card-number">4005519200000004</span>
+        </li>
+        <li class="cards-list-item">
+          <span class="card-type">Visa</span>
+          <span class="card-number">4012000033330026</span>
+        </li>
+        <li class="cards-list-item">
+          <span class="card-type">Visa</span>
+          <span class="card-number">4012000077777777</span>
+        </li>
+        <li class="cards-list-item">
+          <span class="card-type">Mastercard</span>
+          <span class="card-number">5555555555554444</span>
+        </li>
+        <li class="cards-list-item">
+          <span class="card-type">American Express</span>
+          <span class="card-number">378282246310005</span>
+        </li>
+      </ul>
+    </details>
+  </body>
+</html>
