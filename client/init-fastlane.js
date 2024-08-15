@@ -127,7 +127,7 @@ async function initFastlane() {
           if (result.id) {
             const message = `Order ${result.id}: ${result.status}`;
             console.log(message);
-            alert(message);
+            window.location.replace("/success");
           } else {
             console.error(result);
           }

@@ -214,3 +214,11 @@ section:not(.visited) .edit-button {
   text-decoration: underline;
   text-decoration-color: #e2e4e7;
 }
+
+section.success {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  min-height: 160px;
+}

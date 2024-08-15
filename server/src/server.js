@@ -4,6 +4,7 @@ const express = require("express");
 const {
   renderCheckout,
   renderCheckoutWithShippingSection,
+  renderSuccess
 } = require("./controllers/checkout.js");
 const { createOrder } = require("./controllers/transaction.js");
 
@@ -18,8 +19,8 @@ function configureServer(app) {
 
   app.get("/", renderCheckout);
   app.get("/shipping", renderCheckoutWithShippingSection);
+  app.get("/success",   renderSuccess);
   app.post("/transaction", createOrder);
-
   app.use(express.static("./client"));
 }
 

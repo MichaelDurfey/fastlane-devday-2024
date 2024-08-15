@@ -55,7 +55,12 @@ async function renderCheckoutWithShippingSection(req, res) {
   res.render("checkout-shipping", locals);
 }
 
+async function renderSuccess(req, res) {
+  res.render("success");
+}
+
 module.exports = {
   renderCheckout,
   renderCheckoutWithShippingSection,
+  renderSuccess
 };
