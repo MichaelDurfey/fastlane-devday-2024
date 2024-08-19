@@ -4,9 +4,12 @@ const fetch = require("node-fetch");
 const {
   DOMAINS = "example.com",
   PAYPAL_API_BASE_URL = "https://www.sandbox.paypal.com",
+  CLIENT_ID,
   PAYPAL_CLIENT_ID,
+  CLIENT_SECRET, 
   PAYPAL_CLIENT_SECRET,
   PAYPAL_SDK_BASE_URL = "https://www.sandbox.paypal.com",
+  MERCHANT_ID,
   PAYPAL_MERCHANT_ID,
 } = process.env;
 
@@ -14,7 +17,7 @@ function getPayPalSdkUrl() {
   const sdkUrl = new URL("/sdk/js", PAYPAL_SDK_BASE_URL);
 
   const sdkParams = new URLSearchParams({
-    "client-id": PAYPAL_CLIENT_ID,
+    "client-id": CLIENT_ID || PAYPAL_CLIENT_ID,
     components: "buttons,fastlane",
   });
 
@@ -32,7 +35,7 @@ async function getClientToken() {
     const url = `${PAYPAL_API_BASE_URL}/v1/oauth2/token`;
 
     const auth = Buffer.from(
-      `${PAYPAL_CLIENT_ID}:${PAYPAL_CLIENT_SECRET}`
+      `${CLIENT_ID || PAYPAL_CLIENT_ID}:${CLIENT_SECRET || PAYPAL_CLIENT_SECRET}`
     ).toString("base64");
 
     const headers = {
@@ -42,8 +45,8 @@ async function getClientToken() {
 
     if (PAYPAL_MERCHANT_ID) {
       headers["PayPal-Auth-Assertion"] = getAuthAssertionToken(
-        PAYPAL_CLIENT_ID,
-        PAYPAL_MERCHANT_ID
+        CLIENT_ID || PAYPAL_CLIENT_ID,
+        MERCHANT_ID || PAYPAL_MERCHANT_ID
       );
     }
 
